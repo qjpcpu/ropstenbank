@@ -61,7 +61,6 @@ func main() {
 
 	threshold := big.NewInt(10000000000000000) // 0.01 ETH
 	networkId, _ := conn.NetworkID(context.Background())
-	var nonce uint64
 	for _, account := range ks.Accounts() {
 		balance, err := conn.BalanceAt(context.Background(), account.Address, nil)
 		if err != nil || balance.Cmp(threshold) < 0 {
@@ -70,6 +69,7 @@ func main() {
 		}
 		fmt.Printf("账户%s余额为%.3feth\n", account.Address.Hex(), asfloat(balance))
 		amount := new(big.Int).Div(new(big.Int).Mul(balance, big.NewInt(999)), big.NewInt(1000))
+		nonce, _ := conn.PendingNonceAt(context.Background(), account.Address)
 		tx := types.NewTransaction(nonce, common.HexToAddress(to_addr), amount, 21000, big.NewInt(20000000000), nil)
 		ks.Unlock(account, pwd)
 		signed, err := ks.SignTx(account, tx, networkId)
