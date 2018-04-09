@@ -63,6 +63,10 @@ func main() {
 	networkId, _ := conn.NetworkID(context.Background())
 	for _, account := range ks.Accounts() {
 		balance, err := conn.BalanceAt(context.Background(), account.Address, nil)
+		if err != nil {
+			fmt.Printf("查询%s余额失败:%v\n", account.Address.Hex(), err)
+			continue
+		}
 		if err != nil || balance.Cmp(threshold) < 0 {
 			fmt.Printf("账户%s余额不足0.01eth\n", account.Address.Hex())
 			continue
