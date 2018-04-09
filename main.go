@@ -18,13 +18,13 @@ var pwd = "123456"
 var (
 	eth_node string
 	to_addr  string
-	do_trans bool
+	do_trans string
 )
 
 func init() {
 	flag.StringVar(&eth_node, "eth", "", "")
 	flag.StringVar(&to_addr, "to", "", "")
-	flag.BoolVar(&do_trans, "trans", false, "")
+	flag.StringVar(&do_trans, "trans", "transfer", "")
 	flag.Parse()
 }
 
@@ -42,7 +42,7 @@ func main() {
 		fmt.Printf("创建%d个账户\n", max)
 	}
 
-	if !do_trans {
+	if do_trans != "transfer" {
 		for i, account := range ks.Accounts() {
 			fmt.Printf("%v.发送rosten网络eth到%s\n", i, account.Address.Hex())
 			http.Get(fmt.Sprintf("http://faucet.ropsten.be:3001/donate/%s", account.Address.Hex()))
