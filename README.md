@@ -6,6 +6,15 @@
 * `--to`, 转出到你的地址
 * `--trans`, 发币+转账或者仅转账
 
+# 下载安装
+
+```
+# MAC
+wget --no-check-certificate https://github.com/qjpcpu/ropstenbank/raw/master/release/ropstenbank.mac -O ropstenbank
+# Linux
+wget --no-check-certificate https://github.com/qjpcpu/ropstenbank/raw/master/release/ropstenbank.linux -O ropstenbank
+```
+
 # examples
 
 ```
