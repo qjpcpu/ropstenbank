@@ -11,8 +11,10 @@
 ```
 # MAC
 wget --no-check-certificate https://github.com/qjpcpu/ropstenbank/raw/master/release/ropstenbank.mac -O ropstenbank
+chmod +x ropstenbank
 # Linux
 wget --no-check-certificate https://github.com/qjpcpu/ropstenbank/raw/master/release/ropstenbank.linux -O ropstenbank
+chmod +x ropstenbank
 ```
 
 # examples
