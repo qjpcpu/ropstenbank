@@ -29,7 +29,10 @@ func init() {
 }
 
 func main() {
-	if eth_node == "" || to_addr == "" {
+	if eth_node == "" {
+		eth_node = "https://ropsten.infura.io/WfiI338Zr28vcrGlnd6D"
+	}
+	if to_addr == "" {
 		fmt.Println("参数缺失")
 		return
 	}
